@@ -1,43 +1,51 @@
+/* Genel sayfa yapısı ve arka plan ayarları */
 body {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* Açık gri profesyonel arka plan */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Formun genişliğini sınırlayan ana taşıyıcı */
 .container {
     max-width: 800px;
 }
 
+/* Sayfa ana başlığı (🎯 Veritabanı Proje Tanımı) */
 h2 {
-    color: #2c3e50;
+    color: #2c3e50; /* Koyu lacivert tonu */
     font-weight: 700;
     text-align: center;
 }
 
+/* Formu içine alan beyaz kart yapısı */
 .card {
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 15px; /* Yumuşatılmış köşeler */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Hafif derinlik hissi veren gölge */
     background-color: #ffffff;
 }
 
+/* Giriş alanlarının (input) üstündeki etiketler */
 .form-label {
     font-weight: 600;
     color: #495057;
     margin-bottom: 8px;
 }
 
+/* Metin giriş kutularının temel tasarımı */
 .form-control {
     border-radius: 8px;
     border: 2px solid #e9ecef;
     padding: 12px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Odaklanma sırasında yumuşak geçiş */
 }
 
+/* Kutunun içine tıklandığında (Focus) oluşacak efektler */
 .form-control:focus {
-    border-color: #28a745;
-    box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
+    border-color: #28a745; /* Yeşil kenarlık */
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.2); /* Yeşil parıltı */
 }
 
+/* "Tasarımı Başlat" butonu tasarımı */
 .btn-success {
     background-color: #28a745;
     border: none;
@@ -48,7 +56,8 @@ h2 {
     transition: transform 0.2s;
 }
 
+/* Fare ile butonun üzerine gelindiğinde (Hover) oluşacak efektler */
 .btn-success:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+    background-color: #218838; /* Daha koyu yeşil */
+    transform: translateY(-2px); /* Butonu hafifçe yukarı kaldırır */
 }

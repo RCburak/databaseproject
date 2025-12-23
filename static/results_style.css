@@ -1,14 +1,15 @@
 :root {
-    /* Professional Enterprise Color Palette */
-    --primary-deep: #1e293b;     /* Slate 800 - Headlines */
-    --accent-indigo: #4f46e5;    /* Indigo 600 - Main Accent */
-    --success-emerald: #10b981;  /* Emerald 500 - Table Headers */
-    --warning-amber: #f59e0b;    /* Amber 500 - Stage 4 Highlight */
-    --bg-soft: #f1f5f9;          /* Slate 100 - Background */
-    --text-main: #334155;        /* Slate 700 - General Text */
-    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    /* Kurumsal ve profesyonel renk paleti tanımları */
+    --primary-deep: #1e293b;     /* Başlıklar için koyu gri/lacivert tonu */
+    --accent-indigo: #4f46e5;    /* Ana vurgu rengi (İndigo) */
+    --success-emerald: #10b981;  /* Tablo başlıkları için yeşil tonu */
+    --warning-amber: #f59e0b;    /* Stage 4 vurgusu için kehribar rengi */
+    --bg-soft: #f1f5f9;          /* Sayfa geneli için yumuşak arka plan rengi */
+    --text-main: #334155;        /* Genel metin rengi */
+    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Kartlar için hafif gölge */
 }
 
+/* Sayfa geneli yazı tipi ve renk ayarları */
 body { 
     background-color: var(--bg-soft); 
     font-family: 'Inter', system-ui, -apple-system, sans-serif; 
@@ -16,17 +17,17 @@ body {
     line-height: 1.6;
 }
 
-/* Corporate Header Design */
+/* Sayfa üstündeki kurumsal başlık kartı */
 .header-card {
     background: #ffffff;
-    border-bottom: 4px solid var(--accent-indigo);
+    border-bottom: 4px solid var(--accent-indigo); /* Alt kısımdaki renkli çizgi */
     padding: 25px 40px;
     border-radius: 16px;
     margin-bottom: 40px;
     box-shadow: var(--card-shadow);
 }
 
-/* Stage Cards - Clean White Space Layout */
+/* Rapor aşamalarını içeren beyaz bilgi kartları */
 .stage-box { 
     background: white; 
     padding: 40px; 
@@ -36,6 +37,7 @@ body {
     box-shadow: var(--card-shadow);
 }
 
+/* Bölüm başlıkları (Stage 2, 3 vb.) */
 h2 { 
     color: var(--primary-deep); 
     font-weight: 800; 
@@ -46,6 +48,7 @@ h2 {
     letter-spacing: -0.025em;
 }
 
+/* Başlıkların solundaki dikey renkli çubuk */
 h2::before {
     content: "";
     width: 6px;
@@ -55,15 +58,16 @@ h2::before {
     border-radius: 10px;
 }
 
-/* Modern and Legible Table Design */
+/* Tablo yapısı ve okunabilirlik ayarları */
 .table { 
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid #e2e8f0 !important;
 }
 
+/* Tablo başlık satırı tasarımı */
 .table thead th { 
-    background: #f8fafc; /* Light Gray Header Background */
+    background: #f8fafc; /* Başlık alanı için çok açık gri */
     color: var(--primary-deep); 
     font-weight: 700;
     text-transform: uppercase; 
@@ -73,45 +77,49 @@ h2::before {
     border-bottom: 2px solid #e2e8f0;
 }
 
+/* Tablo hücre içerikleri */
 .table tbody td { 
     padding: 16px; 
     border-bottom: 1px solid #f1f5f9;
     vertical-align: middle;
 }
 
+/* Fare ile tablo satırı üzerine gelindiğinde oluşan efekt */
 .table tbody tr:hover {
     background-color: #fcfcfd;
 }
 
-/* Stage 4 - High Contrast Warning Highlight */
+/* Stage 4 - Eksik kurallar için özel sarı/kehribar vurgulu kutu */
 .stage-4-container {
-    border-left: 8px solid var(--warning-amber) !important;
-    background-color: #fffbeb !important; /* Very Light Amber */
+    border-left: 8px solid var(--warning-amber) !important; /* Sol tarafta kalın uyarı çizgisi */
+    background-color: #fffbeb !important; /* Arka planda çok hafif sarı tonu */
 }
 
+/* Stage 4 başlığı için özel koyu sarı renk */
 .stage-4-container h2 {
-    color: #92400e; /* Amber 800 */
+    color: #92400e; 
 }
 
-/* SQL Editor - Deep Contrast Code Block */
+/* SQL Kod editörü görünümü (Koyu tema) */
 pre { 
-    background: #0f172a; /* Slate 900 */
+    background: #0f172a; /* Slate 900 koyu arka plan */
     color: #e2e8f0;
-    padding: 35px 25px 25px 25px; /* Added top padding for the label */
+    padding: 35px 25px 25px 25px; 
     border-radius: 12px; 
     font-family: 'Fira Code', 'Cascadia Code', monospace;
     font-size: 0.9rem;
     line-height: 1.6;
     border: 1px solid #1e293b;
-    position: relative; /* Context for absolute positioning */
-    overflow-x: auto;
+    position: relative; /* İçindeki etiketi konumlandırmak için gerekli */
+    overflow-x: auto; /* Kod uzunsa yatay kaydırma çubuğu ekler */
 }
 
+/* Kod kutusunun sağ üstündeki "SQL GENERATED CODE" etiketi */
 pre::before {
     content: "SQL GENERATED CODE";
     position: absolute;
     top: 0;
-    right: 20px; /* Moved to the right side */
+    right: 20px; /* Sağ tarafa yaslar */
     font-size: 10px;
     font-weight: bold;
     color: #94a3b8;
@@ -120,7 +128,7 @@ pre::before {
     border-radius: 0 0 8px 8px;
 }
 
-/* Mermaid Diagram - Clean Frame */
+/* ER Diyagramı (Mermaid) çerçeve ayarları */
 .mermaid { 
     background: #ffffff; 
     padding: 25px; 
@@ -128,8 +136,9 @@ pre::before {
     border: 1px solid #e2e8f0;
 }
 
+/* Çıktı alırken veya PDF kaydederken yapılacak düzenlemeler */
 @media print { 
-    .no-print { display: none !important; } 
+    .no-print { display: none !important; } /* Yazdırılmayacak alanları gizler */
     body { background: white; color: black; }
     .stage-box { border: 1px solid #ccc; box-shadow: none; margin-bottom: 15px; page-break-inside: avoid; }
 }
