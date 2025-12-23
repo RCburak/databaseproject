@@ -24,34 +24,37 @@ def generate():
     }
 
     try:
-        # BÖLÜM 1: Stage 2 & 3 (İş Kuralları ve Tablo Tanımları)
-        p1 = f"Project: {project_data}. Provide Stage 2 (Business Rules Table) and Stage 3 (Table Definitions with PK/FK). Output ONLY Bootstrap HTML tables. No conversational text."
+        # BÖLÜM 1: Stage 2 & 3 (İş Kuralları ve Tablolar)
+        p1 = f"Project: {project_data}. Provide Stage 2 (Business Rules Table) and Stage 3 (Table Definitions with PK/FK). Output ONLY Bootstrap HTML tables. No prose sentences."
         res1 = client.chat.completions.create(model="gpt-4o", messages=[{"role": "user", "content": p1}])
         part1 = res1.choices[0].message.content
 
-        # BÖLÜM 2: Stage 4 (Eksik Kural Analizi)
+        # BÖLÜM 2: Stage 4 (Eksik Kural Analizi - Doküman Şartı)
         p_missing = f"Analyze for Stage 4: Missing or ambiguous rules for {project_data}. Output ONLY a Bootstrap table: Missing Rule, Related BR, Solution/Question."
         res_m = client.chat.completions.create(model="gpt-4o", messages=[{"role": "user", "content": p_missing}])
         missing_rules = res_m.choices[0].message.content
 
         # BÖLÜM 3: Stage 5, 6 & 7 (Normalizasyon, ER ve SQL)
         p2 = f"""For {project_data}: 
-        1. STAGE 5 - Normalization: 0NF to 3NF tables. 
-        2. STAGE 6 - ER Diagram: Provide ONLY: <pre class='mermaid'>erDiagram [code]</pre>. 
-        3. STAGE 7 - SQL: CREATE, TRIGGER, VIEW, ROLE, 3 SELECTs. 
-        Output ONLY HTML tables and <pre> tags. No prose."""
+        1. STAGE 5 - Normalization: Summarize 0NF to 3NF in clean Bootstrap tables. 
+        2. STAGE 6 - ER Diagram: Provide ONLY the following block: <pre class='mermaid'>erDiagram [Your code]</pre> using Crow's Foot notation.
+        3. STAGE 7 - SQL: Use <pre> tags for CREATE, TRIGGER, VIEW, ROLE and SELECT queries. 
+        IMPORTANT: NO CONVERSATIONAL TEXT. ONLY HTML ELEMENTS."""
         res2 = client.chat.completions.create(model="gpt-4o", messages=[{"role": "user", "content": p2}])
         part2 = res2.choices[0].message.content
 
-        # Markdown temizliği
-        part1 = part1.replace("```html", "").replace("```", "")
-        part2 = part2.replace("```html", "").replace("```", "")
-        missing_rules = missing_rules.replace("```html", "").replace("```", "")
+        # Temizlik Fonksiyonu
+        def clean_html(text):
+            return text.replace("```html", "").replace("```mermaid", "").replace("```", "").strip()
+
+        part1 = clean_html(part1)
+        part2 = clean_html(part2)
+        missing_rules = clean_html(missing_rules)
 
         return render_template('results.html', part1=part1, part2=part2, missing_rules=missing_rules)
 
     except Exception as e:
-        return f"<div class='alert alert-danger'>Hata: {str(e)}</div>"
+        return f"<div class='alert alert-danger'>Hata oluştu: {str(e)}</div>"
 
 if __name__ == '__main__':
     app.run(debug=True)
