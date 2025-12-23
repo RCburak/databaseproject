@@ -1,77 +1,135 @@
 :root {
-    --primary: #2c3e50;
-    --secondary: #27ae60;
-    --accent: #3498db;
-    --warning: #f39c12;
-    --light: #f8f9fa;
-    --dark-code: #1e1e1e;
+    /* Professional Enterprise Color Palette */
+    --primary-deep: #1e293b;     /* Slate 800 - Headlines */
+    --accent-indigo: #4f46e5;    /* Indigo 600 - Main Accent */
+    --success-emerald: #10b981;  /* Emerald 500 - Table Headers */
+    --warning-amber: #f59e0b;    /* Amber 500 - Stage 4 Highlight */
+    --bg-soft: #f1f5f9;          /* Slate 100 - Background */
+    --text-main: #334155;        /* Slate 700 - General Text */
+    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-body { background-color: #f0f2f5; font-family: 'Inter', 'Segoe UI', sans-serif; color: #333; }
+body { 
+    background-color: var(--bg-soft); 
+    font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+    color: var(--text-main);
+    line-height: 1.6;
+}
 
-/* Stage Kartları */
+/* Corporate Header Design */
+.header-card {
+    background: #ffffff;
+    border-bottom: 4px solid var(--accent-indigo);
+    padding: 25px 40px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    box-shadow: var(--card-shadow);
+}
+
+/* Stage Cards - Clean White Space Layout */
 .stage-box { 
     background: white; 
-    padding: 35px; 
-    border-radius: 20px; 
-    margin-bottom: 40px; 
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 40px; 
+    border-radius: 16px; 
+    margin-bottom: 35px; 
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--card-shadow);
 }
 
-/* Başlık Stilleri */
 h2 { 
-    color: var(--primary); 
+    color: var(--primary-deep); 
     font-weight: 800; 
-    border-left: 6px solid var(--secondary); 
-    padding-left: 20px; 
-    margin-bottom: 25px; 
     font-size: 1.6rem;
-    letter-spacing: -0.5px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.025em;
 }
 
-/* Tablo Tasarımı */
-.table { border-radius: 12px; overflow: hidden; border: none; margin-top: 10px; }
-.table thead { background: var(--primary); color: white; }
-.table thead th { border: none; padding: 15px; font-weight: 500; }
-.table tbody td { padding: 15px; border-bottom: 1px solid #edf2f7; vertical-align: middle; }
-.table tbody tr:hover { background-color: #f8fbff; }
+h2::before {
+    content: "";
+    width: 6px;
+    height: 28px;
+    background: var(--accent-indigo);
+    margin-right: 15px;
+    border-radius: 10px;
+}
 
-/* Stage 4 Özel Tasarımı */
-.border-warning-custom { border-left: 6px solid var(--warning) !important; }
-.text-warning { color: var(--warning) !important; font-weight: 700; }
+/* Modern and Legible Table Design */
+.table { 
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0 !important;
+}
 
-/* SQL Kod Blokları (Dark Mode) */
+.table thead th { 
+    background: #f8fafc; /* Light Gray Header Background */
+    color: var(--primary-deep); 
+    font-weight: 700;
+    text-transform: uppercase; 
+    font-size: 0.75rem; 
+    letter-spacing: 0.05em;
+    padding: 15px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.table tbody td { 
+    padding: 16px; 
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background-color: #fcfcfd;
+}
+
+/* Stage 4 - High Contrast Warning Highlight */
+.stage-4-container {
+    border-left: 8px solid var(--warning-amber) !important;
+    background-color: #fffbeb !important; /* Very Light Amber */
+}
+
+.stage-4-container h2 {
+    color: #92400e; /* Amber 800 */
+}
+
+/* SQL Editor - Deep Contrast Code Block */
 pre { 
-    background: var(--dark-code); 
-    color: #9cdcfe; /* Soft Blue Code Color */
-    padding: 25px; 
+    background: #0f172a; /* Slate 900 */
+    color: #e2e8f0;
+    padding: 35px 25px 25px 25px; /* Added top padding for the label */
     border-radius: 12px; 
-    font-size: 14px; 
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.9rem;
     line-height: 1.6;
-    border: 1px solid #333;
-    position: relative;
+    border: 1px solid #1e293b;
+    position: relative; /* Context for absolute positioning */
+    overflow-x: auto;
 }
 
 pre::before {
-    content: "SQL / CODE";
+    content: "SQL GENERATED CODE";
     position: absolute;
     top: 0;
-    right: 20px;
+    right: 20px; /* Moved to the right side */
     font-size: 10px;
-    color: #666;
-    background: #252526;
-    padding: 2px 8px;
-    border-radius: 0 0 5px 5px;
+    font-weight: bold;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 12px;
+    border-radius: 0 0 8px 8px;
 }
 
-/* Mermaid Diyagram Alanı */
+/* Mermaid Diagram - Clean Frame */
 .mermaid { 
-    background: white; 
-    padding: 40px; 
-    border-radius: 15px; 
-    border: 1px dashed #cbd5e0;
-    margin-top: 20px;
+    background: #ffffff; 
+    padding: 25px; 
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
 }
 
-@media print { .no-print { display: none; } .stage-box { box-shadow: none; border: 1px solid #ddd; } }
+@media print { 
+    .no-print { display: none !important; } 
+    body { background: white; color: black; }
+    .stage-box { border: 1px solid #ccc; box-shadow: none; margin-bottom: 15px; page-break-inside: avoid; }
+}
