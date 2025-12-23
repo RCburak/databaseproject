@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
+    <meta charset="UTF-8">
     <title>DB Design Assistant</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
 </head>
 <body class="container mt-5">
-    <h2 class="mb-4">🎯 Veritabanı Proje Tanımı Girişi</h2>
-    <form action="/generate" method="post" class="card p-4 shadow-sm">
+    <div class="text-center mb-5">
+        <h2 class="display-6">🎯 Veritabanı Proje Tanımı Girişi</h2>
+    </div>
+    <form action="/generate" method="post" class="card p-4 shadow mb-5">
         <div class="row">
-            <div class="col-md-6 mb-3"><label>Domain:</label><input type="text" name="domain" class="form-control" required></div>
-            <div class="col-md-6 mb-3"><label>Primary Entity:</label><input type="text" name="primary_entity" class="form-control" required></div>
+            <div class="col-md-6 mb-3"><label class="form-label fw-bold">Domain:</label>
+                <input type="text" name="domain" class="form-control" required></div>
+            <div class="col-md-6 mb-3"><label class="form-label fw-bold">Primary Entity:</label>
+                <input type="text" name="primary_entity" class="form-control" required></div>
         </div>
-        <div class="mb-3"><label>Constraint/Rule:</label><textarea name="constraints" class="form-control" rows="3"></textarea></div>
-        <div class="mb-3"><label>Advanced Feature (Trigger/Function):</label><input type="text" name="advanced" class="form-control"></div>
-        <div class="mb-3"><label>Security/Access Control:</label><input type="text" name="security" class="form-control"></div>
-        <div class="mb-3"><label>Reporting Requirement:</label><input type="text" name="reporting" class="form-control"></div>
-        <div class="mb-3"><label>Common Tasks:</label><input type="text" name="tasks" class="form-control"></div>
-        <button type="submit" class="btn btn-success w-100">Tasarımı Başlat</button>
+        <div class="mb-3"><label class="form-label fw-bold">Constraint/Rule:</label>
+            <textarea name="constraints" class="form-control" rows="3"></textarea></div>
+        <div class="mb-3"><label class="form-label fw-bold">Advanced Feature:</label>
+            <input type="text" name="advanced" class="form-control"></div>
+        <div class="mb-3"><label class="form-label fw-bold">Security/Access Control:</label>
+            <input type="text" name="security" class="form-control"></div>
+        <div class="mb-3"><label class="form-label fw-bold">Reporting Requirement:</label>
+            <input type="text" name="reporting" class="form-control"></div>
+        <div class="mb-3"><label class="form-label fw-bold">Common Tasks:</label>
+            <input type="text" name="tasks" class="form-control"></div>
+        <button type="submit" class="btn btn-success btn-lg w-100">Tasarımı Başlat</button>
     </form>
 </body>
 </html>
